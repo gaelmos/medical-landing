@@ -30,7 +30,7 @@ export function StatsSection() {
           <div className="flex justify-center">
             <div className="w-80 h-60 bg-muted rounded-lg flex items-center justify-center">
               <img
-                src="/professional-doctor-with-stethoscope-in-medical-of.png"
+                src="medico.png"
                 alt="Doctor profesional en consulta médica"
                 className="w-full h-full object-cover rounded-lg"
               />

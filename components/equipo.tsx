@@ -3,27 +3,27 @@ export function TeamSection() {
     {
       name: "Elian Engelberg",
       role: "UX-UI",
-      image: "/team/elian-engelberg.png",
+      image: "/equipo/elian.png",
     },
     {
       name: "Tobias Sendyk",
       role: "Back-End",
-      image: "/team/tobias-sendyk.jpg",
+      image: "/equipo/tobi.png",
     },
     {
       name: "Pedro Tome",
       role: "IA",
-      image: "/team/pedro-tome.jpg",
+      image: "/equipo/pedro.png",
     },
     {
       name: "Gael Moszenberg",
       role: "IA",
-      image: "/team/gael-moszenberg.jpg",
+      image: "/equipo/gael.png",
     },
     {
       name: "Pablo Vives",
       role: "Front-End",
-      image: "/team/pablo-vives.jpg",
+      image: "/equipo/pablo.png",
     },
   ]
 
