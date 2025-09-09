@@ -4,31 +4,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match medical landing page design */
-  --background: oklch(1 0 0); /* White background */
-  --foreground: oklch(0.2 0 0); /* Dark grey text */
-  --card: oklch(0.98 0 0); /* Light grey card background */
-  --card-foreground: oklch(0.2 0 0); /* Dark grey card text */
-  --popover: oklch(1 0 0); /* White popover */
-  --popover-foreground: oklch(0.2 0 0); /* Dark grey popover text */
-  --primary: oklch(0.45 0.15 180); /* Teal primary color */
-  --primary-foreground: oklch(1 0 0); /* White text on primary */
-  --secondary: oklch(0.65 0.15 140); /* Green secondary color */
-  --secondary-foreground: oklch(1 0 0); /* White text on secondary */
-  --muted: oklch(0.98 0 0); /* Light grey muted */
-  --muted-foreground: oklch(0.45 0 0); /* Medium grey muted text */
-  --accent: oklch(0.65 0.15 140); /* Green accent */
-  --accent-foreground: oklch(1 0 0); /* White accent text */
+ 
+  --background: oklch(1 0 0); 
+  --foreground: oklch(0.2 0 0); 
+  --card: oklch(0.98 0 0); 
+  --card-foreground: oklch(0.2 0 0); 
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0 0); 
+  --primary: oklch(0.45 0.15 180); 
+  --primary-foreground: oklch(1 0 0); 
+  --secondary: oklch(0.65 0.15 140); 
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.98 0 0); 
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.65 0.15 140); 
+  --accent-foreground: oklch(1 0 0); 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0 0); /* Light border */
-  --input: oklch(1 0 0); /* White input background */
-  --ring: oklch(0.45 0.15 180 / 0.5); /* Teal focus ring */
-  --chart-1: oklch(0.45 0.15 180); /* Teal chart color */
-  --chart-2: oklch(0.65 0.15 140); /* Green chart color */
-  --chart-3: oklch(0.7 0.15 60); /* Yellow chart color */
-  --chart-4: oklch(0.577 0.245 27.325); /* Red chart color */
-  --chart-5: oklch(0.6 0.2 270); /* Purple chart color */
+  --border: oklch(0.9 0 0); 
+  --input: oklch(1 0 0); 
+  --ring: oklch(0.45 0.15 180 / 0.5); 
+  --chart-1: oklch(0.45 0.15 180);
+  --chart-2: oklch(0.65 0.15 140);
+  --chart-3: oklch(0.7 0.15 60);
+  --chart-4: oklch(0.577 0.245 27.325); 
+  --chart-5: oklch(0.6 0.2 270); 
   --radius: 0.625rem;
   --sidebar: oklch(0.98 0 0);
   --sidebar-foreground: oklch(0.2 0 0);
