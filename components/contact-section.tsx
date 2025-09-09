@@ -5,7 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function ContactSection() {
   return (
-    <section className="py-16 px-4 bg-red">
+    <section>
+      <div className="py-16 px-4 bg-back"></div>
       <div className="max-w-2xl mx-auto">
         <div className="mb-8">
           <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md mb-4">Contacto</div>

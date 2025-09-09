@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonios" className="py-16 px-4 bg-gradient-to-b from-cyan-50 to-white">
+    <section id="testimonios" className="py-16 px-4 bg-backgronund">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <span className="inline-block bg-blue-800 text-white px-6 py-2 rounded text-sm font-medium mb-6">

@@ -1,6 +1,6 @@
 export function StatsSection() {
   return (
-    <section id="stats-section" className="py-16 px-4 bg-background">
+    <section id="stats-section" className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md mb-4">Nosotros</div>

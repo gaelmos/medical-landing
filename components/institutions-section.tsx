@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export function InstitutionsSection() {
   return (
-    <section className="py-16 px-4 bg-cyan-50">
+    <section className="py-16 px-4 bg-white" >
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
           <div className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md mb-4">Instituciones</div>
