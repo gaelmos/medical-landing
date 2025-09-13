@@ -20,8 +20,11 @@ export function HeroSection() {
       />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
-          QUE SERVICIOS OFRECEMOS
+          QUE SERVICIOS
         </h1>
+        <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
+         OFRECEMOS
+        </h2>
         <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-balance">
           Revolucionando la detección del cáncer de páncreas con inteligencia artificial
         </p>

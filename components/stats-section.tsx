@@ -4,7 +4,8 @@ export function StatsSection() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-md mb-4">Nosotros</div>
-          <h2 className="text-3xl font-bold text-foreground mb-6">Avanzados en Medicina de Precisión</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-6">Avanzados en Medicina de</h2>
+          <h3 className="text-3xl font-bold text-foreground mb-6">Precisión</h3>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -20,15 +21,15 @@ export function StatsSection() {
                 <div className="text-4xl font-bold text-muted-foreground mb-2">95%</div>
                 <p className="text-sm text-muted-foreground">Precisión en Diagnósticos</p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-secondary mb-2">1000+</div>
+              <div className="text-right">
+                <div className="text-4xl font-bold text-accent mb-2">1000+</div>
                 <p className="text-sm text-muted-foreground">Pacientes Atendidos</p>
               </div>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <div className="w-80 h-60 bg-muted rounded-lg flex items-center justify-center">
+            <div className="w-100 h-80 bg-muted rounded-lg flex items-center justify-center">
               <img
                 src="medico.png"
                 alt="Doctor profesional en consulta médica"
