@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIA Belgrano</title>
+    <style>
+      :root {
+        --primary: #0a5c8b;
+        --primary-dark: #083d5d;
+        --primary-soft: #eaf8ff;
+        --secondary: #6ec7d8;
+        --accent: #1cb2b2;
+        --text: #1a1a1a;
+        --muted: #5a6470;
+        --card: #ffffff;
+        --panel: #f3f8fb;
+        --border: #dfeaf0;
+        --shadow: 0 14px 28px rgba(19, 90, 130, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #fff;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a { text-decoration: none; }
+      img { max-width: 100%; display: block; }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: var(--primary);
+        color: #fff;
+        font-size: 0.9rem;
+      }
+
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        padding: 12px 0;
+      }
+
+      .topbar .left,
+      .topbar .right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brandbar {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      }
+
+      .brandbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #e9f0f4;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1.1rem;
+      }
+
+      .brand-text {
+        line-height: 1.1;
+      }
+
+      .brand-text strong {
+        display: block;
+        color: var(--primary);
+        font-size: 1.7rem;
+      }
+
+      .brand-text span {
+        color: #5f6971;
+        font-size: 0.8rem;
+      }
+
+      nav {
+        display: flex;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: var(--primary);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.88rem;
+      }
+
+      .hero {
+        position: relative;
+        padding: 120px 0 80px;
+        background: linear-gradient(rgba(10,92,139,0.62), rgba(10,92,139,0.62)), url('./public/assets/bg-main.svg') center/cover no-repeat;
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 860px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .hero h1,
+      .hero h2 {
+        margin: 0;
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        line-height: 1.05;
+        font-weight: 800;
+      }
+
+      .hero p {
+        max-width: 720px;
+        margin: 22px auto 0;
+        font-size: clamp(1.05rem, 2vw, 1.5rem);
+        color: rgba(255,255,255,0.95);
+      }
+
+      .btn {
+        display: inline-block;
+        border: 0;
+        border-radius: 999px;
+        padding: 16px 32px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      .btn:hover { transform: translateY(-1px); }
+
+      .btn-primary {
+        margin-top: 26px;
+        background: var(--secondary);
+        color: #083d5d;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .pill {
+        display: inline-block;
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-size: 0.8rem;
+      }
+
+      .section h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        margin: 18px 0 12px;
+        color: #1f2a33;
+      }
+
+      .section-lead {
+        margin: 0 auto;
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 1.06rem;
+      }
+
+      .stats {
+        background: #fff;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .stats-copy {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 22px;
+        margin-top: 26px;
+      }
+
+      .metric {
+        text-align: center;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #5c6d76;
+      }
+
+      .metric .accent {
+        color: #4ab7ac;
+      }
+
+      .metric span {
+        color: var(--muted);
+      }
+
+      .doctor-wrap {
+        display: flex;
+        justify-content: center;
+      }
+
+      .doctor-card {
+        width: min(100%, 440px);
+        height: 320px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #edf2f5;
+        box-shadow: var(--shadow);
+      }
+
+      .doctor-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .services {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .services h2,
+      .services .section-lead {
+        color: #fff;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+        gap: 28px;
+        margin-top: 46px;
+      }
+
+      .card {
+        background: #fff;
+        color: var(--text);
+        border-radius: 18px;
+        padding: 28px 24px 22px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .icon-box {
+        width: 72px;
+        height: 72px;
+        background: rgba(10,92,139,0.1);
+        border-radius: 14px;
+        margin: 0 auto 18px;
+        display: grid;
+        place-items: center;
+        font-size: 2rem;
+      }
+
+      .card h3 {
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      .card p {
+        margin: 0 0 18px;
+        color: var(--muted);
+      }
+
+      .btn-outline {
+        border: 1px solid var(--primary);
+        background: transparent;
+        color: var(--primary);
+        padding: 12px 20px;
+        border-radius: 10px;
+      }
+
+      .institutions {
+        background: #fff;
+      }
+
+      .institution-grid {
+        max-width: 820px;
+        margin: 42px auto 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 24px;
+      }
+
+      .institution {
+        background: #fff;
+        border: 2px solid #5ec7d9;
+        border-radius: 18px;
+        padding: 24px 18px;
+        text-align: center;
+        box-shadow: 0 8px 18px rgba(12, 121, 158, 0.08);
+      }
+
+      .institution-logo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 12px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .institution-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .institution-title {
+        font-weight: 700;
+        color: #2f3f4e;
+      }
+
+      .testimonials {
+        background: #f7fafc;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 24px;
+        margin-top: 36px;
+      }
+
+      .testimony {
+        background: #fff;
+        border: 2px solid var(--primary);
+        border-radius: 20px;
+        padding: 22px;
+      }
+
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #dff6fb;
+        color: var(--primary);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+
+      .person strong {
+        display: block;
+        color: #24313d;
+      }
+
+      .person span {
+        color: #62717d;
+        font-size: 0.85rem;
+      }
+
+      .team {
+        background: #f3f5f8;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(140px, 1fr));
+        gap: 24px;
+        justify-items: center;
+        margin-top: 34px;
+      }
+
+      .member {
+        text-align: center;
+      }
+
+      .member-photo {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #dfeaf1;
+        margin: 0 auto 12px;
+        border: 3px solid #dbeaf1;
+      }
+
+      .member-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .member h3 {
+        margin: 0;
+        color: #2b3b49;
+      }
+
+      .member p {
+        margin: 4px 0 0;
+        color: #65737d;
+      }
+
+      .contact {
+        background: #fff;
+      }
+
+      .contact-box {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .contact-header {
+        text-align: center;
+        margin-bottom: 26px;
+      }
+
+      .contact-card {
+        background: linear-gradient(180deg, #ffffff 0%, #f5fbff 100%);
+        border: 1px solid rgba(10, 92, 139, 0.12);
+        border-radius: 22px;
+        padding: 28px;
+        box-shadow: 0 18px 38px rgba(10, 92, 139, 0.10);
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+      }
+
+      input, textarea, button {
+        font: inherit;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1.5px solid var(--border);
+        background: #f9fbfc;
+        color: var(--text);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus, textarea:focus {
+        outline: none;
+        border-color: rgba(10, 92, 139, 0.5);
+        box-shadow: 0 0 0 4px rgba(110, 199, 216, 0.18);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 130px;
+      }
+
+      .send-btn {
+        background: linear-gradient(135deg, #25d366 0%, #1ebc5d 100%);
+        color: #fff;
+        border: 0;
+        border-radius: 12px;
+        padding: 16px 18px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 12px 24px rgba(37, 211, 102, 0.22);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .send-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 28px rgba(37, 211, 102, 0.26);
+      }
+
+      @media (max-width: 900px) {
+        .stats-grid,
+        .cards,
+        .testimonial-grid,
+        .team-grid,
+        .institution-grid {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          display: none;
+        }
+
+        .topbar-inner,
+        .brandbar-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="topbar">
+        <div class="container topbar-inner">
+          <div class="left">
+            <span>📞 URGENCIAS +54 9 2323 541169</span>
+          </div>
+          <div class="right">
+            <span>◎</span>
+            <span>f</span>
+            <span>x</span>
+            <span>📍</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="brandbar">
+        <div class="container brandbar-inner">
+          <div class="brand">
+            <div class="brand-mark">PIA</div>
+            <div class="brand-text">
+              <strong>PIA</strong>
+              <span>Belgrano</span>
+            </div>
+          </div>
+
+          <nav aria-label="Menú principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#instituciones">Instituciones</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#contacto">Contacto</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="container hero-content">
+          <h1>QUE SERVICIOS</h1>
+          <h2>OFRECEMOS</h2>
+          <p>Revolucionando la detección del cáncer de páncreas con inteligencia artificial</p>
+          <button class="btn btn-primary" type="button" onclick="document.getElementById('nosotros').scrollIntoView({behavior:'smooth'})">Conocer Más</button>
+        </div>
+      </section>
+
+      <section class="section stats" id="nosotros">
+        <div class="container stats-grid">
+          <div>
+            <div class="pill">Nosotros</div>
+            <h2>Avanzados en Medicina de<br />Precisión</h2>
+            <p class="stats-copy">
+              En PIA Belgrano, combinamos la experiencia médica tradicional con la innovación tecnológica más avanzada.
+              Nuestro equipo multidisciplinario está compuesto por oncólogos, radiólogos, ingenieros en IA y científicos de datos.
+            </p>
+
+            <div class="metrics">
+              <div class="metric">
+                <strong>95%</strong>
+                <span>Precisión en Diagnósticos</span>
+              </div>
+              <div class="metric">
+                <strong class="accent">1000+</strong>
+                <span>Pacientes Atendidos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="doctor-wrap">
+            <div class="doctor-card">
+              <img src="./public/medico.png" alt="Doctor profesional en consulta médica" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section services" id="servicios">
+        <div class="container">
+          <div class="section-header">
+            <div class="pill" style="background:#fff; color:var(--primary);">Servicios</div>
+            <h2>Tecnología Médica Avanzada</h2>
+            <p class="section-lead">
+              Utilizamos inteligencia artificial de última generación para la detección temprana y precisa del cáncer de páncreas, mejorando significativamente las posibilidades de tratamiento exitoso.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <div class="icon-box">🧠</div>
+              <h3>Diagnóstico con IA</h3>
+              <p>
+                Análisis automatizado de imágenes médicas utilizando algoritmos de aprendizaje profundo para detectar anomalías con precisión superior al 95%.
+              </p>
+              <button class="btn btn-outline" type="button">Leer Más</button>
+            </article>
+
+            <article class="card">
+              <div class="icon-box">👥</div>
+              <h3>Profesionales</h3>
+              <p>
+                Ofrecemos médicos especializados con años de experiencia, los cuales se pueden conectar con pacientes en minutos de manera virtual.
+              </p>
+              <button class="btn btn-outline" type="button">Leer Más</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section institutions" id="instituciones">
+        <div class="container">
+          <div class="section-header">
+            <div class="pill">Instituciones</div>
+            <h2>Instituciones Colaboradoras</h2>
+          </div>
+
+          <div class="institution-grid">
+            <div class="institution">
+              <div class="institution-logo">
+                <img src="./public/rof.jpg" alt="Hospital Roffo" />
+              </div>
+              <div class="institution-title">Hospital Roffo</div>
+            </div>
+
+            <div class="institution">
+              <div class="institution-logo">
+                <img src="./public/itl.png" alt="Hospital Italiano" />
+              </div>
+              <div class="institution-title">Hospital Italiano</div>
+            </div>
+
+            <div class="institution">
+              <div class="institution-logo" style="display:grid; place-items:center; background:#fff7fb; border-radius:12px; border:1px solid #f0d9e8;">
+                <div style="text-align:center; color:#d9307b; font-weight:800; line-height:1.2;">
+                  <div style="font-size:2.5rem;">IAF</div>
+                  <div style="font-size:0.55rem;">INSTITUTO</div>
+                  <div style="font-size:0.55rem;">ALEXANDER</div>
+                  <div style="font-size:0.55rem;">FLEMING</div>
+                </div>
+              </div>
+              <div class="institution-title">Hospital Fleming</div>
+            </div>
+
+            <div class="institution">
+              <div class="institution-logo">
+                <img src="./public/aus.jpg" alt="Hospital Austral" />
+              </div>
+              <div class="institution-title">Hospital Austral</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonials" id="testimonios">
+        <div class="container">
+          <div class="section-header">
+            <div class="pill">Testimonios</div>
+            <h2>Testimonios de médicos y pacientes</h2>
+          </div>
+
+          <div class="testimonial-grid">
+            <article class="testimony">
+              <div class="person">
+                <div class="avatar">JB</div>
+                <div>
+                  <strong>Dr. Jorge Barrios</strong>
+                  <span>Médico</span>
+                </div>
+              </div>
+              <p>“Esta plataforma ha revolucionado la forma en que atiendo a mis pacientes. La comunicación es más fluida y eficiente.”</p>
+            </article>
+
+            <article class="testimony">
+              <div class="person">
+                <div class="avatar">PL</div>
+                <div>
+                  <strong>Pablo Lopez</strong>
+                  <span>Paciente</span>
+                </div>
+              </div>
+              <p>“Poder consultar con mi médico desde casa ha sido increíble. El servicio es excelente y muy fácil de usar.”</p>
+            </article>
+
+            <article class="testimony">
+              <div class="person">
+                <div class="avatar">LM</div>
+                <div>
+                  <strong>Luis Morales</strong>
+                  <span>Paciente</span>
+                </div>
+              </div>
+              <p>“Ahorro tiempo y dinero en traslados. La atención médica online es el futuro de la salud.”</p>
+            </article>
+
+            <article class="testimony">
+              <div class="person">
+                <div class="avatar">CM</div>
+                <div>
+                  <strong>Carlos Medina</strong>
+                  <span>Paciente</span>
+                </div>
+              </div>
+              <p>“La plataforma es muy intuitiva y segura. Me siento cómodo compartiendo mi información médica aquí.”</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section team" id="equipo">
+        <div class="container">
+          <div class="section-header">
+            <div class="pill">Equipo</div>
+          </div>
+
+          <div class="team-grid">
+            <div class="member">
+              <div class="member-photo"><img src="./public/equipo/elian.png" alt="Elian Engelberg" /></div>
+              <h3>Elian Engelberg</h3>
+              <p>UX-UI</p>
+            </div>
+
+            <div class="member">
+              <div class="member-photo"><img src="./public/equipo/tobi.png" alt="Tobias Sendyk" /></div>
+              <h3>Tobias Sendyk</h3>
+              <p>Back-End</p>
+            </div>
+
+            <div class="member">
+              <div class="member-photo"><img src="./public/equipo/pedro.png" alt="Pedro Tome" /></div>
+              <h3>Pedro Tome</h3>
+              <p>IA</p>
+            </div>
+
+            <div class="member">
+              <div class="member-photo"><img src="./public/equipo/gael.png" alt="Gael Moszenberg" /></div>
+              <h3>Gael Moszenberg</h3>
+              <p>IA</p>
+            </div>
+
+            <div class="member">
+              <div class="member-photo"><img src="./public/equipo/pablo.png" alt="Pablo Vives" /></div>
+              <h3>Pablo Vives</h3>
+              <p>Front-End</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contacto">
+        <div class="container contact-box">
+          <div class="contact-header">
+            <div class="pill">Contacto</div>
+            <h2>¿Necesitas una Consulta?</h2>
+            <p class="section-lead">Estaremos aquí para ayudar. Contáctanos para agendar una cita o resolver tus dudas.</p>
+          </div>
+
+          <div class="contact-card">
+            <form id="whatsappForm" novalidate>
+              <input type="text" id="waName" placeholder="Nombre y Apellido" required />
+              <input type="tel" id="waPhone" placeholder="Teléfono" />
+              <textarea id="waMessage" placeholder="Mensaje" required></textarea>
+              <button class="send-btn" type="submit">💬 Enviar por WhatsApp</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const whatsappForm = document.getElementById('whatsappForm');
+
+      whatsappForm?.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById('waName')?.value?.trim() || '';
+        const phone = document.getElementById('waPhone')?.value?.trim() || 'No informado';
+        const message = document.getElementById('waMessage')?.value?.trim() || '';
+
+        if (!name || !message) {
+          alert('Completá nombre y mensaje antes de enviar.');
+          return;
+        }
+
+        const number = '5491133718444';
+        const text = encodeURIComponent(
+          'Hola, quiero consultar sobre la web.\n\n' +
+          'Nombre: ' + name + '\n' +
+          'Teléfono: ' + phone + '\n\n' +
+          'Mensaje:\n' + message
+        );
+
+        const url = 'https://wa.me/' + number + '?text=' + text;
+        window.open(url, '_blank');
+        whatsappForm.reset();
+      });
+    </script>
+  </body>
+</html>
